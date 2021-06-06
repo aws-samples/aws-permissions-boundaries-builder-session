@@ -63,7 +63,7 @@ To setup your environment please expand one of the following dropdown sections (
             "Action": [
                 "s3:List*"
             ],
-            "Resource": "arn:aws:s3:::identity-ex-<>"
+            "Resource": "arn:aws:s3:::identity-ex-<>*"
         }
     ]
 }
@@ -170,7 +170,7 @@ To setup your environment please expand one of the following dropdown sections (
 **ACTION**:
 
 * Create an IAM User and name it `webadmin`. The user will need console access so give it a password.
-* Attach the **identity-ex-webadmin-permissionpolicy**, **IAMReadOnlyAccess** & **AWSLambdaReadOnlyAccess** policies to the IAM user.
+* Attach the **identity-ex-webadmin-permissionpolicy**, **IAMReadOnlyAccess** & **AWSLambda_ReadOnlyAccess** policies to the IAM user.
 
 When you are done the **webadmin** user should have three policies attached: identity-ex-webadmin-permissionpolicy, IAMReadOnlyAccess & AWSLambdaReadOnlyAccess.
 
