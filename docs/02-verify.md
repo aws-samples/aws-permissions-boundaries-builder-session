@@ -88,6 +88,8 @@ async function getKeys(params, keys){
 
 * Test the Lambda function and make sure it is generating logs in CloudWatch logs and that it is able to list the ELB logs in the ELB access logs bucket the object in S3. In order to test you will need to create a test event. The parameters of the test do not matter.
 
+* You can perform an additional test after changing the `"ELB_ACCESS_LOGS_BUCKET_NAME"` with the bucket that begins with `"identity-ex-rover*"`. In that case, the Lambda function won't have the permission to list files, as we specified the ares bucket only in the permission boundaries.
+
 ## Cleanup
 
 In order to prevent charges to your account we recommend cleaning up the infrastructure that was created. Expand one of the following dropdowns and follow the instructions:
