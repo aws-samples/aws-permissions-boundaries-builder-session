@@ -1,15 +1,15 @@
 ## Environment Setup
 
-To setup your environment please expand one of the following dropdown sections (depending on how you're doing this builder session) and follow the instructions: 
+To setup your environment please expand one of the following dropdown sections (depending on how you're doing this builder session) and follow the instructions:
 
-??? info  "Click here if you're at an *AWS event* where the *Event Engine* is being used" 
+??? info  "Click here if you're at an *AWS event* where the *Event Engine* is being used"
 
     <p style="font-size:20px;">
       **Step 1** : Open the AWS Console
     </p>
-	
+
 	1. Navigate to the <a href="https://dashboard.eventengine.run" target="_blank">Event Engine dashboard</a>
-	2. Enter your **team hash** code. 
+	2. Enter your **team hash** code.
 	3. Click **AWS Console**.  The CloudFormation template for this round has already been prerun.
 
 ??? info "Click here if you're running this individually in your own AWS Account"
@@ -27,7 +27,7 @@ To setup your environment please expand one of the following dropdown sections (
     3. Finally, acknowledge that the template will create IAM roles under **Capabilities and click **Create**.
 
     This will bring you back to the CloudFormation console. You can refresh the page to see the stack starting to create. Before moving on, make sure the stack is in a **CREATE_COMPLETE**.
-    
+
 
 > All resources are located in the **us-west-2** region.
 
@@ -63,7 +63,7 @@ To setup your environment please expand one of the following dropdown sections (
             "Action": [
                 "s3:List*"
             ],
-            "Resource": "arn:aws:s3:::identity-ex-<>"
+            "Resource": "arn:aws:s3:::identity-ex-ares-*"
         }
     ]
 }
@@ -71,10 +71,10 @@ To setup your environment please expand one of the following dropdown sections (
 
 ## Task 2 - Create a permission policy for the Web Admin
 
-**ACTION**: Create the permission policy that will be attached to the **webadmin** AWS IAM user. Name the new policy **`identity-ex-webadmin-permissionpolicy`**. 
+**ACTION**: Create the permission policy that will be attached to the **webadmin** AWS IAM user. Name the new policy **`identity-ex-webadmin-permissionpolicy`**.
 
 >  **Hint**: <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html" target="_blank">Friendly Names and Paths
-</a>. Replace the ACCOUNT_ID with your account ID and the **'< >'** with a friendly name that can be used as a resource restriction. 
+</a>. Replace the ACCOUNT_ID with your account ID and the **'< >'** with a friendly name that can be used as a resource restriction.
 
 ``` json
 {
@@ -114,7 +114,7 @@ To setup your environment please expand one of the following dropdown sections (
             "Resource": [
                 "arn:aws:iam::ACCOUNT_ID:role/identity-ex-<>"
             ],
-            "Condition": {"StringEquals": 
+            "Condition": {"StringEquals":
                 {"iam:PermissionsBoundary": "arn:aws:iam::ACCOUNT_ID:policy/identity-ex-permissionboundary-ares-lambda"}
             }
         },
@@ -170,9 +170,9 @@ To setup your environment please expand one of the following dropdown sections (
 **ACTION**:
 
 * Create an IAM User and name it `webadmin`. The user will need console access so give it a password.
-* Attach the **identity-ex-webadmin-permissionpolicy**, **IAMReadOnlyAccess** & **AWSLambdaReadOnlyAccess** policies to the IAM user.
+* Attach the **identity-ex-webadmin-permissionpolicy**, **IAMReadOnlyAccess** & **AWSLambda_ReadOnlyAccess** policies to the IAM user.
 
-When you are done the **webadmin** user should have three policies attached: identity-ex-webadmin-permissionpolicy, IAMReadOnlyAccess & AWSLambdaReadOnlyAccess.
+When you are done the **webadmin** user should have three policies attached: identity-ex-webadmin-permissionpolicy, IAMReadOnlyAccess & AWSLambda_ReadOnlyAccess.
 
 ## Task 4 - Gather info needed for the Verify phase
 
@@ -192,4 +192,3 @@ Here are all of the details you need to pass to another team:
 Enter this information into the **VERIFY** phase form and exchange forms with another team so you both can work through the tasks.
 
 You can now move on to the **Verify** phase!
-
